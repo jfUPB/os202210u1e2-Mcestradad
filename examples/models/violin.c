@@ -15,13 +15,13 @@ static void _destroy(Violin* this)
 	}
 }
 
-static void _smell(Violin * this, Director* director)
+static void _see(Violin * this, Director* director)
 {
 	director->registerObserver(director, this->observer);
 	printf("%s Just saw %s\n", this->name, director->name);
 }
 
-static void _handleDirectorEvent(Violin* this, Director* cat)
+static void _handleDirectorEvent(Violin* this, Director* director)
 {
 	printf("%s\n just heared %s", this->name, director->name);
 }
@@ -33,7 +33,7 @@ static void _handleDirectorEvent(Violin* this, Director* cat)
  * @param subject
  */
 static void _notify(Violin* this, int numero, void* subject) {
-	_handleCatEvent(this, (Director*) subject);
+	_handleDirectorEvent(this, (Director*) subject);
 }
 
 Violin* VIOLIN_create(char* violinsName)
